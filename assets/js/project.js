@@ -3,25 +3,33 @@ function scrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function menuOnHover() {
-    document.getElementById("nav").classList.add("show");
-    document.getElementById("menu-bg").classList.add("show-bg");
-}
-
-function menuOnMouseLeave() {
-    document.getElementById("nav").classList.remove("show");
-    document.getElementById("menu-bg").classList.remove("show-bg");
-}
-
 let menu_open = false;
-function menu(m) {
-    m.classList.toggle('open');
+
+function menu() {
     menu_open = !menu_open;
+
+    if (menu_open) {
+        document.getElementById("nav").classList.add("show");
+        document.getElementById("menu-bg").classList.add("show-bg");
+        document.querySelector("#ham-menu #upper-line").classList.add("open");
+        document.querySelector("#ham-menu #lower-line").classList.add("open");
+    } else {
+        document.getElementById("nav").classList.remove("show");
+        document.getElementById("menu-bg").classList.remove("show-bg");
+        document.querySelector("#ham-menu #upper-line").classList.remove("open");
+        document.querySelector("#ham-menu #lower-line").classList.remove("open");
+    }
+}
+
+let breadcrumbs_open = false;
+function breadcrumbs(m) {
+    m.classList.toggle('open');
+    breadcrumbs_open = !breadcrumbs_open;
     scroll_on_top = document.getElementById("scroll-on-top");
     mainnav = document.getElementById("main-nav");
     tbar = document.getElementById("tbar");
 
-    if (menu_open) {
+    if (breadcrumbs_open) {
         scroll_on_top.classList.add("show");
         scroll_on_top.classList.remove("hide");
         mainnav.classList.add("show");
@@ -34,15 +42,6 @@ function menu(m) {
         mainnav.classList.add("hide");
         mainnav.classList.remove("show");
     }
-}
-function hide_mainnav() {
-    mainmenu = document.querySelector(".hamburger");
-    mainnav = document.getElementById("main-nav");
-    tbar = document.getElementById("tbar");
-
-    mainnav.classList.add("hide");
-    mainnav.classList.remove("show");
-    menu(mainmenu);
 }
 
 function reveal() {
