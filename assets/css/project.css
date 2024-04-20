@@ -195,7 +195,8 @@
 }
 
 .nav > ul ul li {
-    padding: 14px 33px 0;
+    padding: 14px 0 0 28px;
+    width: 20rem;
 }
 
 .nav li {
@@ -246,9 +247,13 @@ nav li > ul li {
 
 .menu-bg, #menu-container {
     top: 180px;
-    left: 368px;
+    left: 149px;
     position: absolute;
-    width: 500px;
+    width: 380px;
+}
+
+#menu-container:has(#nav.show) {
+    height: 614px;
 }
 
 .menu-bg {
@@ -300,6 +305,8 @@ nav li > ul li {
     height: 0;
     opacity: 0;
     overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 #coursework > span:hover {
