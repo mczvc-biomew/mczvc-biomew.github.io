@@ -31,7 +31,13 @@
   <link href="/assets/css/tailwind.css" rel="stylesheet" />
   <!--- Fonts and Icons -->
   {% include fonts-and-icons.style.html %}
-
+  <script>
+    window.onload = function () {
+      document.getElementById("main-nav").classList.add("show");
+      mainmenu = document.querySelector(".hamburger");
+      breadcrumbs(mainmenu);
+    };
+  </script>
 </head>
 <body class="h-[100vh] grid [grid-template-rows:0fr_auto]">
 
