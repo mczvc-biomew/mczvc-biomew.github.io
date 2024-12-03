@@ -16,8 +16,7 @@ jobs:
         with:
           node-version: "16"
           cache: 'yarn'
-
-      - run:
+      - run: |
           yarn install
           yarn generate
       - name: Init new repo in $BUILD_FOLDER and commit generated files
