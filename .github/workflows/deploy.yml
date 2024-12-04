@@ -27,11 +27,11 @@ jobs:
           grep -rnwl "<link rel=\"prefetch\"" $BUILD_FOLDER | xargs sed -i 's$<link rel="prefetch" href="[^"]*\.\(jpg\|png\|webm\|jpeg\|svg\|gif\)">$$g'
           cd $BUILD_FOLDER
           touch .nojekyll
-          # git init
-          # git add -A
-          # git config --local user.email "action@github.com"
-          # git config --local user.name "Github Action"
-          # git commit -m 'deploy'
+          git init
+          git add -A
+          git config --local user.email "action@github.com"
+          git config --local user.name "Github Action"
+          git commit -m 'deploy'
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
