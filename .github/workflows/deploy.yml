@@ -2,6 +2,8 @@ name: Deploy to Github pages
 on:
   push:
     branches: [main]
+permission:
+  content: write
 env:
   BUILD_FOLDER: .output/public
 
