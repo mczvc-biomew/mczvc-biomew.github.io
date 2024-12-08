@@ -1,1 +1,0 @@
-import{_ as s}from"./DlAUqK2U.js";import{o,c as a,v as t,a as n}from"./CGlACbDb.js";const c={},r={class:"-mt-1 px-2"},d={class:"details -mx-2 px-4 pl-8 max-w-[444px]"};function _(e,l){return o(),a("div",r,[t(e.$slots,"title",{},void 0,!0),n("div",d,[t(e.$slots,"default",{},void 0,!0)])])}const p=s(c,[["render",_],["__scopeId","data-v-e5044fb2"]]);export{p as default};
