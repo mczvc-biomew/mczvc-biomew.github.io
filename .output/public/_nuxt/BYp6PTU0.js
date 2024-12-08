@@ -1,1 +1,0 @@
-import{e as s,o as a,c as n,d as o,t as r,s as c,v as l}from"./rW1Z2kIf.js";const p=s({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(a(),n("div",{class:l([e.classNames])},[o(r(e.text)+" ",1),c(t.$slots,"default")],2))}});export{p as default};
