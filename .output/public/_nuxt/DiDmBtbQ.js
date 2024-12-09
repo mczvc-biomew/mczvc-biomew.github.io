@@ -1,1 +1,0 @@
-import{e as a,o,c as n,d as r,t as l,v as s,x as c}from"./BfTyt4F8.js";const p=a({__name:"DocumentContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(o(),n("div",{class:c([e.classNames])},[r(l(e.text)+" ",1),s(t.$slots,"default"),s(t.$slots,"footer")],2))}});export{p as default};
