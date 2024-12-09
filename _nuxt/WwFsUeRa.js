@@ -1,1 +1,0 @@
-import{_ as s}from"./DlAUqK2U.js";import{o,c as a,v as t,a as c}from"./CKMCHtfM.js";const n={},d={class:"-mt-1 px-2"},r={class:"details -mx-2 max-w-[444px]"};function _(e,i){return o(),a("div",d,[t(e.$slots,"title",{},void 0,!0),c("div",r,[t(e.$slots,"default",{},void 0,!0)])])}const m=s(n,[["render",_],["__scopeId","data-v-91b3cdbc"]]);export{m as default};
