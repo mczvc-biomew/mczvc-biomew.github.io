@@ -1,1 +1,0 @@
-import{e as a,o as s,c as n,d as o,t as r,v as c,x as l}from"./BCV-aSdu.js";const p=a({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(s(),n("div",{class:l([e.classNames])},[o(r(e.text)+" ",1),c(t.$slots,"default")],2))}});export{p as default};
