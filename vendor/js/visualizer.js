@@ -202,7 +202,7 @@ AUDIO.VISUALIZER = (function () {
         var req = new XMLHttpRequest();
         req.open('GET', this.audioSrc, true);
         req.responseType = 'arraybuffer';
-        this.canvasCtx.fillText('Loading...', this.canvas.width / 2 + 10, this.canvas.height / 2);
+        this.canvasCtx.fillText('Music OFF', this.canvas.width / 2 + 10, this.canvas.height / 2);
 
         req.onload = function () {
             this.ctx.decodeAudioData(req.response, this.playSound.bind(this), this.onError.bind(this));
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.__lazyMusicLoader = new Promise( (resolve, reject) => {
         resolve( () => {
             return () => {
-                AUDIO.VISUALIZER.getInstance({
+                window.__vizz = AUDIO.VISUALIZER.getInstance({
                     autoplay: true,
                     loop: true,
                     audio: 'audio',
