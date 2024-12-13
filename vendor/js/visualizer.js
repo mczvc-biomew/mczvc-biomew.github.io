@@ -144,12 +144,44 @@ AUDIO.VISUALIZER = (function () {
     Visualizer.prototype.bindEvents = function () {
         var _this = this;
 
-        document.addEventListener('click', function (e) {
+        // _this.canvas.addEventListener('contextlost', (event) => {
+        //     console.log('context lost!', event)
+        // })
+
+        _this.canvas.addEventListener('mouseenter', function (e) {
             if (e.target === _this.canvas) {
                 e.stopPropagation();
+                const heroElement = document.getElementById('hero');
+                if (heroElement)
+                    heroElement.classList.add('hover')
+            }
+        });
+
+        _this.canvas.addEventListener('mouseleave', function (e) {
+            if (e.target === _this.canvas) {
+                e.stopPropagation();
+                const heroElement = document.getElementById('hero');
+                if (heroElement)
+                    heroElement.classList.remove('hover')
+            }
+
+        })
+
+        document.documentElement.addEventListener('click', (e) => {
+            if (e.target === _this.canvas) {
+                e.stopPropagation();
+                const heroElement = document.getElementById('hero');
+                
                 if (!_this.isPlaying) {
+                    if (heroElement) {
+                        heroElement.classList.add('hover')
+                        heroElement.classList.add('foreground');
+                    }
+
                     return (_this.ctx.state === 'suspended') ? _this.playSound() : _this.loadSound();
                 } else {
+                    if (heroElement)
+                        heroElement.classList.remove('foreground')
                     return _this.pauseSound();
                 }
             }
@@ -269,6 +301,7 @@ AUDIO.VISUALIZER = (function () {
         var cy = this.canvas.height / 2;
         var correction = 10;
 
+        this.canvasCtx.font = 'bold ' + parseInt(4, 10) + 8 + 'px ' + this.font[1];
         this.canvasCtx.textBaseline = 'top';
         this.canvasCtx.fillText('by ' + this.author, cx + correction, cy);
         this.canvasCtx.font = 'bold ' + parseInt(4, 10) + 8 + 'px ' + this.font[1];
@@ -391,20 +424,25 @@ AUDIO.VISUALIZER = (function () {
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
-    console.log('ROCK!')
-
-    AUDIO.VISUALIZER.getInstance({
-        autoplay: true,
-        loop: true,
-        audio: 'audio',
-        canvas: 'canvas',
-        style: 'lounge',
-        barWidth: 2,
-        barHeight: 2,
-        barSpacing: 7,
-        barColor: '#0eaedf9e',
-        shadowBlur: 5,
-        shadowColor: '#06272f',
-        font: ['36px', 'Source Sans Pro']
+    window.__lazyMusicLoader = new Promise( (resolve, reject) => {
+        resolve( () => {
+            return () => {
+                AUDIO.VISUALIZER.getInstance({
+                    autoplay: true,
+                    loop: true,
+                    audio: 'audio',
+                    canvas: 'canvas',
+                    style: 'lounge',
+                    barWidth: 2,
+                    barHeight: 2,
+                    barSpacing: 7,
+                    barColor: '#0eaedf9e',
+                    shadowBlur: 5,
+                    shadowColor: '#06272f',
+                    font: ['36px', 'Source Sans Pro']
+                });
+            }
+        } )
     });
+
 }, false);
