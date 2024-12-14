@@ -1,0 +1,1 @@
+import{y as o,o as t,c as s,z as c}from"./BNV9l3-i.js";const n={},r={class:"not-found-layout"};function a(e,_){return t(),s("div",r,[c(e.$slots,"default")])}const d=o(n,[["render",a]]);export{d as default};
