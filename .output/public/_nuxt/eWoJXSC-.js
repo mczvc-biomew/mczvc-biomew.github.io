@@ -1,1 +1,0 @@
-import{d as a,o as s,c as n,q as o,t as r,z as c,A as l}from"./BNV9l3-i.js";const p=a({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(s(),n("div",{class:l([e.classNames])},[o(r(e.text)+" ",1),c(t.$slots,"default")],2))}});export{p as default};

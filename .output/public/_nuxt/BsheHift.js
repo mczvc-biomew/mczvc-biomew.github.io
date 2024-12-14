@@ -1,1 +1,0 @@
-function r(s,t,a){a&&(a.style.transform="translate3d("+s+", "+t+", 0)")}function f(s,t){s&&t.forEach(a=>{s.classList.add(a)})}function c(s,t){s&&t.forEach(a=>{s.classList.remove(a)})}export{f as a,c as l,r as t};
