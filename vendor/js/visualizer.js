@@ -202,6 +202,8 @@ AUDIO.VISUALIZER = (function () {
         var req = new XMLHttpRequest();
         req.open('GET', this.audioSrc, true);
         req.responseType = 'arraybuffer';
+
+        this.canvasCtx.font = 'bold 40px ' + this.font[1];
         this.canvasCtx.fillText('Music OFF', this.canvas.width / 2 + 10, this.canvas.height / 2);
 
         req.onload = function () {
@@ -439,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     barColor: '#0eaedf9e',
                     shadowBlur: 5,
                     shadowColor: '#06272f',
-                    font: ['36px', 'Source Sans Pro']
+                    font: ['36px', 'Gotham Condensed Black']
                 });
             }
         } )
