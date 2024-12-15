@@ -42,6 +42,7 @@ AUDIO.VISUALIZER = (function () {
         this.shadowColor = cfg.shadowColor || '#ffffff';
         this.font = cfg.font || ['12px', 'Helvetica'];
         this.gradient = null;
+        this.clickHandler = cfg.clickHandler || null;
     }
 
     /**
@@ -144,44 +145,16 @@ AUDIO.VISUALIZER = (function () {
     Visualizer.prototype.bindEvents = function () {
         var _this = this;
 
-        // _this.canvas.addEventListener('contextlost', (event) => {
-        //     console.log('context lost!', event)
-        // })
-
-        _this.canvas.addEventListener('mouseenter', function (e) {
-            if (e.target === _this.canvas) {
-                e.stopPropagation();
-                const heroElement = document.getElementById('hero');
-                if (heroElement)
-                    heroElement.classList.add('hover')
-            }
-        });
-
-        _this.canvas.addEventListener('mouseleave', function (e) {
-            if (e.target === _this.canvas) {
-                e.stopPropagation();
-                const heroElement = document.getElementById('hero');
-                if (heroElement)
-                    heroElement.classList.remove('hover')
-            }
-
-        })
-
         document.documentElement.addEventListener('click', (e) => {
             if (e.target === _this.canvas) {
                 e.stopPropagation();
-                const heroElement = document.getElementById('hero');
                 
                 if (!_this.isPlaying) {
-                    if (heroElement) {
-                        heroElement.classList.add('hover')
-                        heroElement.classList.add('foreground');
-                    }
+                    this.clickHandler ? this.clickHandler(false, e) : void undefined;
 
                     return (_this.ctx.state === 'suspended') ? _this.playSound() : _this.loadSound();
                 } else {
-                    if (heroElement)
-                        heroElement.classList.remove('foreground')
+                    this.clickHandler ? this.clickHandler(true, e) : void undefined;
                     return _this.pauseSound();
                 }
             }
@@ -428,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.__lazyMusicLoader = new Promise( (resolve, reject) => {
         resolve( () => {
-            return () => {
+            return ( clickHandler ) => {
                 window.__vizz = AUDIO.VISUALIZER.getInstance({
                     autoplay: true,
                     loop: true,
@@ -441,7 +414,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     barColor: '#0eaedf9e',
                     shadowBlur: 5,
                     shadowColor: '#06272f',
-                    font: ['36px', 'Gotham Condensed Black']
+                    font: ['36px', 'Gotham Condensed Black'],
+                    clickHandler: clickHandler
                 });
             }
         } )
