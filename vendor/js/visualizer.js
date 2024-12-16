@@ -43,6 +43,7 @@ AUDIO.VISUALIZER = (function () {
         this.font = cfg.font || ['12px', 'Helvetica'];
         this.gradient = null;
         this.clickHandler = cfg.clickHandler || null;
+        this.loading = false;
     }
 
     /**
@@ -150,11 +151,11 @@ AUDIO.VISUALIZER = (function () {
                 e.stopPropagation();
                 
                 if (!_this.isPlaying) {
-                    this.clickHandler ? this.clickHandler(false, e) : void undefined;
+                    this.clickHandler?.(false, e);
 
                     return (_this.ctx.state === 'suspended') ? _this.playSound() : _this.loadSound();
                 } else {
-                    this.clickHandler ? this.clickHandler(true, e) : void undefined;
+                    this.clickHandler?.(true, e);
                     return _this.pauseSound();
                 }
             }
@@ -172,18 +173,23 @@ AUDIO.VISUALIZER = (function () {
      * Load sound file.
      */
     Visualizer.prototype.loadSound = function () {
-        var req = new XMLHttpRequest();
-        req.open('GET', this.audioSrc, true);
-        req.responseType = 'arraybuffer';
+        if (!this.loading && !this.loaded) {
+            this.loading = true;
 
-        this.canvasCtx.font = 'bold 40px ' + this.font[1];
-        this.canvasCtx.fillText('Music OFF', this.canvas.width / 2 + 10, this.canvas.height / 2);
+            var req = new XMLHttpRequest();
+            req.open('GET', this.audioSrc, true);
+            req.responseType = 'arraybuffer';
 
-        req.onload = function () {
-            this.ctx.decodeAudioData(req.response, this.playSound.bind(this), this.onError.bind(this));
-        }.bind(this);
+            this.canvasCtx.font = 'bold 40px ' + this.font[1];
+            this.canvasCtx.fillText('Music OFF', this.canvas.width / 2 + 10, this.canvas.height / 2);
 
-        req.send();
+            req.onload = function () {
+                this.ctx.decodeAudioData(req.response, this.playSound.bind(this), this.onError.bind(this));
+                this.loaded = true;
+            }.bind(this);
+
+            req.send();
+        }
     };
 
     /**
