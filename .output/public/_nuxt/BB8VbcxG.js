@@ -1,0 +1,1 @@
+import{B as n,r as s}from"./CD0ivB_J.js";const u=n("dark-mode-store",()=>{const e=s(!1);function r(o){e.value=o}function t(o){e.value=!o}function a(){r(!e.value)}return{darkMode:e,setDarkMode:r,setLightMode:t,toggleDarkMode:a}});export{u};
