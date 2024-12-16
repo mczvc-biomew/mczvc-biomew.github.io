@@ -1,1 +1,0 @@
-import{A as t,o as s,c as o,m as n}from"./BqZdSwsQ.js";const a={},c={class:"full-screen gotham-ss-black text-amber-600 text-5xl font-bold"};function r(l,e){return s(),o("p",c,e[0]||(e[0]=[n("span",{class:"bg-black/[0.4]"},"Loading ...",-1)]))}const f=t(a,[["render",r]]);export{f as default};
