@@ -1,1 +1,0 @@
-import{A as s,o,c as n,D as t,n as a}from"./-lyLlHhx.js";const c={},d={class:"-mt-1 px-2"},r={class:"details -mx-2 max-w-[444px]"};function _(e,l){return o(),n("div",d,[t(e.$slots,"title",{},void 0,!0),a("div",r,[t(e.$slots,"default",{},void 0,!0)])])}const f=s(c,[["render",_],["__scopeId","data-v-933bcbca"]]);export{f as default};
