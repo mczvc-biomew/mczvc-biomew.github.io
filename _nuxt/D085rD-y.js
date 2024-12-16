@@ -1,0 +1,1 @@
+import{A as t,o as n,c as o,m as s}from"./BhPITeTO.js";const c={},a={class:"loading-screen-container"};function r(l,e){return n(),o("div",a,e[0]||(e[0]=[s("p",{class:"full-screen gotham-ss-black text-amber-600 text-5xl font-bold"},[s("span",{class:"bg-black/[0.4]"},"> One moment...")],-1)]))}const m=t(c,[["render",r]]);export{m as default};
