@@ -1,1 +1,0 @@
-import{d as a,o as s,c as n,x as o,t as r,D as c,E as l}from"./BvSP2jbs.js";const p=a({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(s(),n("div",{class:l([e.classNames])},[o(r(e.text)+" ",1),c(t.$slots,"default")],2))}});export{p as default};
