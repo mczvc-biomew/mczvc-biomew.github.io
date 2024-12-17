@@ -1,0 +1,1 @@
+import{A as s,o as t,c as o,n}from"./DyhQBX4t.js";const c={},a={class:"loading-screen-container"};function r(l,e){return t(),o("div",a,e[0]||(e[0]=[n("p",{class:"full-screen gotham-ss-black text-amber-600 text-5xl font-bold"},[n("span",{class:"bg-black/[0.4]"},"> One moment...")],-1)]))}const m=s(c,[["render",r]]);export{m as default};
