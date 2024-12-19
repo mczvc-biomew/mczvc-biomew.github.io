@@ -1,1 +1,0 @@
-import{B as o,o as t,c as s,E as c}from"./BGk1UhN1.js";const n={},r={class:"not-found-layout"};function a(e,_){return t(),s("div",r,[c(e.$slots,"default")])}const d=o(n,[["render",a]]);export{d as default};
