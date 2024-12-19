@@ -184,6 +184,7 @@ AUDIO.VISUALIZER = (function () {
             this.canvasCtx.fillText('Music OFF', this.canvas.width / 2 + 10, this.canvas.height / 2);
 
             req.onload = function () {
+                this.loading = false;
                 this.ctx.decodeAudioData(req.response, this.playSound.bind(this), this.onError.bind(this));
                 this.loaded = true;
             }.bind(this);
@@ -407,8 +408,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.__lazyMusicLoader = new Promise( (resolve, reject) => {
         resolve( () => {
-            return ( clickHandler ) => {
-                window.__vizz = AUDIO.VISUALIZER.getInstance({
+            return ( clickHandler, options ) => {
+                const initOptions = options ?? {
                     autoplay: true,
                     loop: true,
                     audio: 'audio',
@@ -422,7 +423,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     shadowColor: '#06272f',
                     font: ['36px', 'Gotham Condensed Black'],
                     clickHandler: clickHandler
-                });
+                } ;
+                window.__vizz = AUDIO.VISUALIZER.getInstance(initOptions);
             }
         } )
     });
