@@ -1,0 +1,1 @@
+import{C as o,o as s,c as t,G as a}from"./BDB9H4xr.js";const c={},n={class:"anim-layout"};function r(e,l){return s(),t("div",n,[a(e.$slots,"default")])}const d=o(c,[["render",r]]);export{d as default};
