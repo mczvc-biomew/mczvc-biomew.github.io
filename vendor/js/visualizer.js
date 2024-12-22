@@ -341,6 +341,12 @@ AUDIO.VISUALIZER = (function () {
         }
     };
 
+    Visualizer.prototype.dispose = function () {
+        this.ctx.close().catch( (reason) => {
+            console.error(reason);
+        } );
+    }
+
     /**
      * @description
      * Create visualizer object instance.
@@ -399,7 +405,7 @@ AUDIO.VISUALIZER = (function () {
      * @public
      */
     return {
-        getInstance: getInstance
+        getInstance: getInstance,
     };
 })();
 
@@ -424,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     font: ['36px', 'Gotham Condensed Black'],
                     clickHandler: clickHandler
                 } ;
-                window.__vizz = AUDIO.VISUALIZER.getInstance(initOptions);
+                return AUDIO.VISUALIZER.getInstance(initOptions);
             }
         } )
     });
