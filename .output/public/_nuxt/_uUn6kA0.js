@@ -1,1 +1,0 @@
-import{E as o,o as s,c as t,I as a}from"./CuOCB3Dq.js";const c={},n={class:"anim-layout"};function r(e,l){return s(),t("div",n,[a(e.$slots,"default")])}const d=o(c,[["render",r]]);export{d as default};
