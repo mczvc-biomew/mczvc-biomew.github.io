@@ -149,15 +149,23 @@ AUDIO.VISUALIZER = (function () {
         document.documentElement.addEventListener('click', (e) => {
             if (e.target === _this.canvas) {
                 e.stopPropagation();
-                
-                if (!_this.isPlaying) {
-                    this.clickHandler?.(false, e);
 
-                    return (_this.ctx.state === 'suspended') ? _this.playSound() : _this.loadSound();
-                } else {
-                    this.clickHandler?.(true, e);
-                    return _this.pauseSound();
+                if (!this.disposed) {
+                    this.clickHandler?.(_this.ctx.state, e);
                 }
+                
+                // if (!_this.isPlaying) {
+                //     if (_this.ctx.state === 'suspended') {
+                //         this.clickHandler?.(true, _this.ctx.state, e);
+                //     } else if (_this.ctx.state === 'closed') {
+                //         this.clickHandler?.(false, e);
+                //     }
+                //     // return  ? _this.playSound() : _this.loadSound();
+                // } else {
+                //     return;
+                //     // this.clickHandler?.(false, e);
+                //     // return _this.pauseSound();
+                // }
             }
         });
 
@@ -341,10 +349,16 @@ AUDIO.VISUALIZER = (function () {
         }
     };
 
+    /**
+     * @description
+     * Dispose (close) music
+     */
     Visualizer.prototype.dispose = function () {
         this.ctx.close().catch( (reason) => {
             console.error(reason);
         } );
+        this.ctx = null;
+        this.disposed = true;
     }
 
     /**
