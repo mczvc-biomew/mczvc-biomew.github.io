@@ -193,8 +193,13 @@ AUDIO.VISUALIZER = (function () {
 
             req.onload = function () {
                 this.loading = false;
-                this.ctx.decodeAudioData(req.response, this.playSound.bind(this), this.onError.bind(this));
-                this.loaded = true;
+                try {
+                    this.ctx.decodeAudioData(req.response, this.playSound.bind(this), this.onError.bind(this));
+                    this.loaded = true;
+                } catch (error) {
+                    console.error(error);
+                    console.warn('Error loading sound.')
+                }
             }.bind(this);
 
             req.send();
@@ -208,8 +213,10 @@ AUDIO.VISUALIZER = (function () {
      * @param  {Object} buffer
      */
     Visualizer.prototype.playSound = function (buffer) {
-        this.isPlaying = true;
 
+        if (!this.ctx) throw 'SOUND CONTEXT ERR'
+
+        this.isPlaying = true;
         if (this.ctx.state === 'suspended') {
             return this.ctx.resume();
         }
@@ -354,8 +361,10 @@ AUDIO.VISUALIZER = (function () {
      * Dispose (close) music
      */
     Visualizer.prototype.dispose = function () {
+        if (!this.loaded) return;
         this.ctx.close().catch( (reason) => {
             console.error(reason);
+            console.warn('Error closing sound.')
         } );
         this.ctx = null;
         this.disposed = true;
