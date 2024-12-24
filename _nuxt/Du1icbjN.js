@@ -1,0 +1,1 @@
+import e from"./D5yMtQak.js";import{d as s,o as n,c,J as a,y as m}from"./cWqd5O2O.js";import"./DuE6jfvW.js";import"./B7jzsU7Y.js";const r={class:"anim-layout"},i="/music/KMKZ.mp3",K=s({__name:"anim",setup(_){return(o,p)=>{const t=e;return n(),c("div",r,[a(o.$slots,"default"),m(t,{musicFile:i,musicAuthor:"KMKZ",musicTitle:"NARDA"})])}}});export{K as default};
