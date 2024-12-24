@@ -1,1 +1,0 @@
-import{d as a,o as s,c as n,B as o,x as r,N as c,O as l}from"./B1--NBF3.js";const p=a({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(s(),n("div",{class:l([e.classNames])},[o(r(e.text)+" ",1),c(t.$slots,"default")],2))}});export{p as default};
