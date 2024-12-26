@@ -281,6 +281,9 @@ AUDIO.VISUALIZER = (function () {
      */
     Visualizer.prototype.renderFrame = function () {
         requestAnimationFrame(this.renderFrame.bind(this));
+
+        if (!this.isPlaying) return;
+
         this.analyser.getByteFrequencyData(this.frequencyData);
 
         this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
