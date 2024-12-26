@@ -41,6 +41,7 @@ AUDIO.VISUALIZER = (function () {
         this.shadowBlur = cfg.shadowBlur || 10;
         this.shadowColor = cfg.shadowColor || '#ffffff';
         this.font = cfg.font || ['12px', 'Helvetica'];
+        this.fontSize = cfg.fontSize || 12;
         this.gradient = null;
         this.clickHandler = cfg.clickHandler || null;
         this.loading = false;
@@ -298,10 +299,10 @@ AUDIO.VISUALIZER = (function () {
         var cy = this.canvas.height / 2;
         var correction = 10;
 
-        this.canvasCtx.font = 'bold ' + parseInt(4, 10) + 8 + 'px ' + this.font[1];
+        this.canvasCtx.font = 'bold ' + this.fontSize + 'px ' + this.font[1];
         this.canvasCtx.textBaseline = 'top';
         this.canvasCtx.fillText('by ' + this.author, cx + correction, cy);
-        this.canvasCtx.font = 'bold ' + parseInt(4, 10) + 8 + 'px ' + this.font[1];
+        this.canvasCtx.font = 'bold ' + this.fontSize + 'px ' + this.font[1];
         this.canvasCtx.textBaseline = 'bottom';
         this.canvasCtx.fillText(this.title, cx + correction, cy);
         this.canvasCtx.font = this.font.join(' ');
@@ -362,6 +363,11 @@ AUDIO.VISUALIZER = (function () {
      */
     Visualizer.prototype.dispose = function () {
         if (!this.loaded) return;
+        this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        clearInterval(INTERVAL);
+        this.sourceNode.disconnect();
+        this.resetTimer();
+        this.isPlaying = false;
         this.ctx.close().catch( (reason) => {
             console.error(reason);
             console.warn('Error closing sound.')
@@ -451,7 +457,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     shadowBlur: 5,
                     shadowColor: '#06272f',
                     font: ['36px', 'Gotham Condensed Black'],
-                    clickHandler: clickHandler
+                    fontSize: 48,
+                    clickHandler: clickHandler,
                 } ;
                 return AUDIO.VISUALIZER.getInstance(initOptions);
             }
