@@ -1,0 +1,1 @@
+import{I as s,o,c as a,W as t,t as c}from"./BofDHBfY.js";const n={},d={class:"-mt-1 px-2"},r={class:"details -mx-2 max-w-[444px]"};function _(e,l){return o(),a("div",d,[t(e.$slots,"title",{},void 0,!0),c("div",r,[t(e.$slots,"default",{},void 0,!0)])])}const f=s(n,[["render",_],["__scopeId","data-v-933bcbca"]]);export{f as default};
