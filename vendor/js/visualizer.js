@@ -365,9 +365,11 @@ AUDIO.VISUALIZER = (function () {
      * Dispose (close) music
      */
     Visualizer.prototype.dispose = function () {
-        if (!this.loaded) return;
         this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         clearInterval(INTERVAL);
+
+        if (!this.loaded) return;
+
         this.sourceNode.disconnect();
         this.resetTimer();
         this.isPlaying = false;
