@@ -1,0 +1,1 @@
+import{I as s,o,c as n,X as t,t as a}from"./CLEc3ice.js";const c={},d={class:"-mt-1 px-2"},r={class:"details -mx-2 max-w-[444px]"};function _(e,l){return o(),n("div",d,[t(e.$slots,"title",{},void 0,!0),a("div",r,[t(e.$slots,"default",{},void 0,!0)])])}const f=s(c,[["render",_],["__scopeId","data-v-1b1c5950"]]);export{f as default};
