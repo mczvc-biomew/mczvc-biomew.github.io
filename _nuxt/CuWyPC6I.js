@@ -1,1 +1,0 @@
-import{d as a,o,c as n,D as r,z as l,X as s,Y as c}from"./B9q9CH7Y.js";const p=a({__name:"DocumentContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(o(),n("div",{class:c([e.classNames])},[r(l(e.text)+" ",1),s(t.$slots,"default"),s(t.$slots,"footer")],2))}});export{p as default};
