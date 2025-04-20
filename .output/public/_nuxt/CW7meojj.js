@@ -1,0 +1,1 @@
+import{_ as s,o,c as a,a0 as t,m as n}from"./lcrGAD2J.js";const c={},d={class:"-mt-1 px-2"},_={class:"details -mx-2 max-w-[444px]"};function r(e,l){return o(),a("div",d,[t(e.$slots,"title",{},void 0,!0),n("div",_,[t(e.$slots,"default",{},void 0,!0)])])}const f=s(c,[["render",r],["__scopeId","data-v-1b1c5950"]]);export{f as default};
