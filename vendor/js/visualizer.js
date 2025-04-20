@@ -45,6 +45,7 @@ AUDIO.VISUALIZER = (function () {
         this.gradient = null;
         this.clickHandler = cfg.clickHandler || null;
         this.loading = false;
+        this.onMusicEnded = cfg.onMusicEnded || null;
     }
 
     /**
@@ -104,7 +105,9 @@ AUDIO.VISUALIZER = (function () {
             this.sourceNode.disconnect();
             this.resetTimer();
             this.isPlaying = false;
-            this.sourceNode = this.ctx.createBufferSource();
+            if (this.loop)
+                this.sourceNode = this.ctx.createBufferSource();
+            this.onMusicEnded();
         }.bind(this);
 
         return this;
@@ -155,18 +158,6 @@ AUDIO.VISUALIZER = (function () {
                     this.clickHandler?.(_this.ctx.state, e);
                 }
                 
-                // if (!_this.isPlaying) {
-                //     if (_this.ctx.state === 'suspended') {
-                //         this.clickHandler?.(true, _this.ctx.state, e);
-                //     } else if (_this.ctx.state === 'closed') {
-                //         this.clickHandler?.(false, e);
-                //     }
-                //     // return  ? _this.playSound() : _this.loadSound();
-                // } else {
-                //     return;
-                //     // this.clickHandler?.(false, e);
-                //     // return _this.pauseSound();
-                // }
             }
         });
 
