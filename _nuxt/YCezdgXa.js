@@ -1,1 +1,0 @@
-import{d as a,o,c as n,m as c,a0 as r,a1 as t}from"./lcrGAD2J.js";const i={class:"icon-wrapper"},m=a({__name:"Icon",props:{icon:String},setup(e){return(s,l)=>(o(),n("div",i,[c("span",{class:t([e.icon,"icon"])},[r(s.$slots,"default")],2)]))}});export{m as _};
