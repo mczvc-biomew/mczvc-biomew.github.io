@@ -105,7 +105,6 @@ AUDIO.VISUALIZER = (function () {
             this.sourceNode.disconnect();
             this.resetTimer();
             this.isPlaying = false;
-            console.log(this.loop, this.loop.value);
             if (this.loop.value || (this.loop.value === undefined && this.loop)) {
                 this.sourceNode = this.ctx.createBufferSource();
             }
