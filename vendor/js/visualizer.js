@@ -215,7 +215,7 @@ AUDIO.VISUALIZER = (function () {
         }
 
         this.sourceNode.buffer = buffer;
-        this.sourceNode.start(0, 4*60+25);
+        this.sourceNode.start(0);
         this.resetTimer();
         this.startTimer();
         this.renderFrame();
