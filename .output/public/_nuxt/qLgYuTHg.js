@@ -1,0 +1,1 @@
+import{d as a,o,c as n,B as c,a0 as r,a1 as t}from"./BE79jqQZ.js";const i={class:"icon-wrapper"},_=a({__name:"Icon",props:{icon:String},setup(e){return(s,l)=>(o(),n("div",i,[c("span",{class:t([e.icon,"icon"])},[r(s.$slots,"default")],2)]))}});export{_};
