@@ -19,7 +19,7 @@ AUDIO.VISUALIZER = (function () {
     function Visualizer (cfg) {
         this.isPlaying = false;
         this.autoplay = cfg.autoplay || false;
-        this.loop = cfg.loop || false;
+        this.loop = (cfg.loop.value && cfg.loop) || (!cfg.loop.value && cfg.loop) || false;
         this.audio = document.getElementById(cfg.audio) || {};
         this.canvas = document.getElementById(cfg.canvas) || {};
         this.canvasCtx = this.canvas.getContext('2d') || null;
@@ -96,7 +96,7 @@ AUDIO.VISUALIZER = (function () {
      */
     Visualizer.prototype.setBufferSourceNode = function () {
         this.sourceNode = this.ctx.createBufferSource();
-        this.sourceNode.loop = this.loop;
+        this.sourceNode.loop = this.loop.value || (!this.loop.value && this.loop);
         this.sourceNode.connect(this.analyser);
         this.sourceNode.connect(this.ctx.destination);
 
@@ -105,8 +105,10 @@ AUDIO.VISUALIZER = (function () {
             this.sourceNode.disconnect();
             this.resetTimer();
             this.isPlaying = false;
-            if (this.loop)
+            if (this.loop.value || (!this.loop.value && this.loop)) {
                 this.sourceNode = this.ctx.createBufferSource();
+                console.log(this.loop);
+            }
             this.onMusicEnded();
         }.bind(this);
 
