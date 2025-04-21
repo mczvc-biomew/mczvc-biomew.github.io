@@ -96,7 +96,7 @@ AUDIO.VISUALIZER = (function () {
      */
     Visualizer.prototype.setBufferSourceNode = function () {
         this.sourceNode = this.ctx.createBufferSource();
-        this.sourceNode.loop = this.loop.value || (!this.loop.value === undefined && this.loop);
+        this.sourceNode.loop = this.loop.value || (this.loop.value === undefined && this.loop);
         this.sourceNode.connect(this.analyser);
         this.sourceNode.connect(this.ctx.destination);
 
@@ -105,7 +105,7 @@ AUDIO.VISUALIZER = (function () {
             this.sourceNode.disconnect();
             this.resetTimer();
             this.isPlaying = false;
-            if (this.loop.value || (!this.loop.value === undefined && this.loop)) {
+            if (this.loop.value || (this.loop.value === undefined && this.loop)) {
                 this.sourceNode = this.ctx.createBufferSource();
             }
             this.onMusicEnded();
