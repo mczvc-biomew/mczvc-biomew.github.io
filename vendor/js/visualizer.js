@@ -19,7 +19,7 @@ AUDIO.VISUALIZER = (function () {
     function Visualizer (cfg) {
         this.isPlaying = false;
         this.autoplay = cfg.autoplay || false;
-        this.loop = cfg.loop.value? cfg.loop : (!cfg.loop.value === undefined && cfg.loop || false);
+        this.loop = cfg.loop.value !== undefined ? cfg.loop : (cfg.loop.value === undefined && cfg.loop || false);
         this.audio = document.getElementById(cfg.audio) || {};
         this.canvas = document.getElementById(cfg.canvas) || {};
         this.canvasCtx = this.canvas.getContext('2d') || null;
