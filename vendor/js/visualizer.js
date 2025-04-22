@@ -185,7 +185,7 @@ AUDIO.VISUALIZER = (function () {
             this.canvasCtx.font = 'bold 40px ' + this.font[1];
             this.canvasCtx.fillText('Music OFF', this.canvas.width / 2 + 10, this.canvas.height / 2);
 
-            this.loading = false;
+            // this.loading = false;
             // try {
             //     this.ctx.decodeAudioData(this.audioBuffer, this.playSound.bind(this), this.onError.bind(this));
             //     this.loaded = true;
