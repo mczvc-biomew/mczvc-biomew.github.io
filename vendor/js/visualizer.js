@@ -21,6 +21,7 @@ AUDIO.VISUALIZER = (function () {
         this.autoplay = cfg.autoplay || false;
         this.loop = cfg.loop.value !== undefined ? cfg.loop : ((cfg.loop.value === undefined && cfg.loop) || false);
         this.audio = document.getElementById(cfg.audio) || {};
+        this.audioBuffer = cfg.audioBuffer || null;
         this.canvas = document.getElementById(cfg.canvas) || {};
         this.canvasCtx = this.canvas.getContext('2d') || null;
         this.author = this.audio.getAttribute('data-author') || '';
@@ -183,6 +184,15 @@ AUDIO.VISUALIZER = (function () {
 
             this.canvasCtx.font = 'bold 40px ' + this.font[1];
             this.canvasCtx.fillText('Music OFF', this.canvas.width / 2 + 10, this.canvas.height / 2);
+
+            this.loading = false;
+            // try {
+            //     this.ctx.decodeAudioData(this.audioBuffer, this.playSound.bind(this), this.onError.bind(this));
+            //     this.loaded = true;
+            // } catch (error) {
+            //     console.error(error);
+            //     console.warn('Error loading sound.')
+            // }
 
             req.onload = function () {
                 this.loading = false;
