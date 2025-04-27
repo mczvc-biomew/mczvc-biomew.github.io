@@ -1,1 +1,0 @@
-import{_ as o,o as t,c as s,a2 as c}from"./s4WHD8pU.js";const n={},a={class:"not-found-layout"};function r(e,_){return t(),s("div",a,[c(e.$slots,"default")])}const d=o(n,[["render",r]]);export{d as default};
