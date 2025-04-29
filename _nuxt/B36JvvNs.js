@@ -1,1 +1,0 @@
-import e from"./pgdg1jg3.js";import{d as s,o as a,c as n,a2 as c,m as r}from"./s4WHD8pU.js";import"./D3lz8Qw9.js";import"./Cbwab2Fj.js";const m={class:"music-narda-layout"},i="/music/KMKZ.mp3",K=s({__name:"narda",setup(_){return(o,u)=>{const t=e;return a(),n("div",m,[c(o.$slots,"default"),r(t,{musicFile:i,musicAuthor:"KMKZ",musicTitle:"NARDA"})])}}});export{K as default};
