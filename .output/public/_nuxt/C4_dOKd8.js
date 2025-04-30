@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as o,$ as t,q as n}from"./Boc2s-K7.js";const c={},d={class:"-mt-1 px-2"},_={class:"details -mx-2 max-w-[777px]"};function r(e,l){return a(),o("div",d,[t(e.$slots,"title",{},void 0,!0),n("div",_,[t(e.$slots,"default",{},void 0,!0)])])}const f=s(c,[["render",r],["__scopeId","data-v-8e66aaa7"]]);export{f as default};
