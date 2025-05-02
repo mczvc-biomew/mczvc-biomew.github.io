@@ -156,8 +156,8 @@ AUDIO.VISUALIZER = (function () {
             if (e.target === _this.canvas) {
                 e.stopPropagation();
 
-                if (!this.disposed) {
-                    this.clickHandler?.(_this.ctx.state, e);
+                if (!_this.disposed) {
+                    _this.clickHandler?.(_this.ctx.state, e);
                 }
                 
             }
