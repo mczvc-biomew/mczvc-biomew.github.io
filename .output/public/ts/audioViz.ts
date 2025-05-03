@@ -169,6 +169,10 @@ export class Visualizer {
     }
 
     private renderByStyleType() {
+        interface MyObject {
+            [key: string]: Function;
+        }
+        return (Visualizer as unknown as MyObject)[TYPE[this.style]];
         // return this[TYPE[this.style]]();
     }
 
