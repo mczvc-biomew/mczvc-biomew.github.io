@@ -1,0 +1,1 @@
+import{_ as a,o as s,c as t,a3 as o}from"./BlayyWlZ.js";const c={},n={class:"game"};function r(e,_){return s(),t("div",n,[o(e.$slots,"default",{},void 0,!0)])}const f=a(c,[["render",r],["__scopeId","data-v-60ea9614"]]);export{f as default};
