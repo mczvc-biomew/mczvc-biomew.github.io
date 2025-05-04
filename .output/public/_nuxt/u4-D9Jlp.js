@@ -1,0 +1,1 @@
+import{d as t,o as a,c as n,O as o,x as r,$ as c,y as l}from"./amiFGXOS.js";const p=t({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(s,i)=>(a(),n("div",{class:l([e.classNames])},[o(r(e.text)+" ",1),c(s.$slots,"default")],2))}});export{p as _};

@@ -148,6 +148,14 @@ export class Visualizer {
         console.info('Error decoding audio file. --', e);
     }
 
+    private renderLounge() {
+        const canvas = this.canvas as HTMLCanvasElement;
+
+        renderLounge(this.canvasCtx, canvas, 140, 
+            this.barWidth, this.barHeight, this.barSpacing,
+        this.frequencyData as Uint8Array<ArrayBuffer>);
+    }
+
     private renderFrame () {
         this.cancelAnimationFrames();
         animationFrames.push( requestAnimationFrame(this.renderFrame.bind(this)) );
@@ -163,16 +171,15 @@ export class Visualizer {
         renderTime(this.canvasCtx, canvas, this.minutes, this.seconds, 10, 80);
         renderSongText(this.canvasCtx, canvas, this.title, this.author, 10, this.font[1], this.fontSize);
         this.canvasCtx.font = this.font.join(' ');
-        renderLounge(this.canvasCtx, canvas, 140, 
-            this.barWidth, this.barHeight, this.barSpacing,
-        this.frequencyData as Uint8Array<ArrayBuffer>);
+        
+        const render = this.renderByStyleType();
+        render.bind(this)();
     }
 
+    [key: string]: any;
+
     private renderByStyleType() {
-        interface MyObject {
-            [key: string]: Function;
-        }
-        return (Visualizer as unknown as MyObject)[TYPE[this.style]];
+        return this[TYPE[this.style]];
         // return this[TYPE[this.style]]();
     }
 
