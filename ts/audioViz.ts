@@ -40,7 +40,7 @@ export class Visualizer {
     private analyser: AnalyserNode | null;
     private sourceNode: AudioBufferSourceNode | null;
     private canvasCtx: CanvasRenderingContext2D;
-    private ctx: AudioContext | null;
+    private audioContext: AudioContext | null;
     private frequencyData: Uint8Array<ArrayBufferLike> | [];
     private duration: number;
     private minutes: string;
@@ -82,7 +82,7 @@ export class Visualizer {
         this.canvasCtx = (this.canvas as HTMLCanvasElement)!.getContext('2d')!;
         this.author = cfg.author || '';
         this.title = cfg.title || '';
-        this.ctx = null;
+        this.audioContext = null;
         this.analyser = null;
         this.sourceNode = null;
         this.frequencyData = [];
@@ -109,7 +109,7 @@ export class Visualizer {
     }
 
     public playSound(buffer: AudioBuffer | null) {
-        const status = playSound(this.ctx!, this.sourceNode!, buffer);
+        const status = playSound(this.audioContext!, this.sourceNode!, buffer);
         this.isPlaying = true;
         this.state = 'playing';
         if (status?.ret) return status.ret;
@@ -119,7 +119,7 @@ export class Visualizer {
     }
 
     public pauseSound() {
-        pauseSound(this.ctx!);
+        pauseSound(this.audioContext!);
         this.isPlaying = false;
         this.state = 'paused';
     }
@@ -208,7 +208,7 @@ export class Visualizer {
                 me.stopPropagation();
 
                 if (!_this.disposed) {
-                    _this.clickHandler(_this.ctx!.state, me);
+                    _this.clickHandler(_this.audioContext!.state, me);
                 }
             }
 
@@ -236,7 +236,7 @@ export class Visualizer {
                 this.loading = false;
 
                 decodeAudioData(
-                        this.ctx!, buffer /*this.audioBuffer!*/, 
+                        this.audioContext!, buffer /*this.audioBuffer!*/, 
                         this.playSound.bind(this), 
                         this.onError.bind(this)
                 ).then( () => {
@@ -252,6 +252,10 @@ export class Visualizer {
         }
     }
 
+    public initialize() {
+        this.gradient = setCanvasGradientStyles(this.canvasCtx, this.barColor, this.shadowBlur, this.shadowColor, this.font.join(' '));
+    }
+
     public dispose() {
         const canvas = this.canvas as HTMLCanvasElement;
 
@@ -263,8 +267,8 @@ export class Visualizer {
 
         this.isPlaying = false;
         this.resetTimer();
-        dispose(this.ctx!, this.sourceNode!);
-        this.ctx = null;
+        dispose(this.audioContext!, this.sourceNode!);
+        this.audioContext = null;
         this.disposed = true;
         this.state = 'disposed';
     }
@@ -272,23 +276,23 @@ export class Visualizer {
     private static _createVisualizer(cfg: VisualizerConfig) {
         const visualizer = new Visualizer(cfg);
         return async function () {
-            visualizer.ctx = await createAudioContext();
-            visualizer.analyser = createAnalyser(visualizer.ctx);
+            visualizer.audioContext = await createAudioContext();
+            visualizer.analyser = createAnalyser(visualizer.audioContext);
             visualizer.frequencyData = createFrequencyData(visualizer.analyser);
             visualizer.sourceNode = connectBufferSourceNodeToAnalyser(
-                visualizer.analyser, visualizer.ctx, visualizer.loop.value, 
+                visualizer.analyser, visualizer.audioContext, visualizer.loop.value, 
                 () => {
                     clearInterval(timingInterval!);
                     visualizer.sourceNode?.disconnect();
                     visualizer.resetTimer();
                     visualizer.isPlaying = false;
                     if (visualizer.loop.value) {
-                        visualizer.sourceNode = visualizer.ctx!.createBufferSource();
+                        visualizer.sourceNode = visualizer.audioContext!.createBufferSource();
                     }
                     visualizer.onMusicEnded();
                 }
             );
-            visualizer.gradient = setCanvasGradientStyles(visualizer.canvasCtx, visualizer.barColor, visualizer.shadowBlur, visualizer.shadowColor, visualizer.font.join(' '));
+            visualizer.initialize();
             visualizer.bindEvents();
 
             return visualizer;
