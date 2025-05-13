@@ -1,1 +1,0 @@
-import{d as s,o as t,c as n,O as o,x as r,a0 as c,y as l}from"./s_FvfdIt.js";const p=s({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(a,i)=>(t(),n("div",{class:l([e.classNames])},[o(r(e.text)+" ",1),c(a.$slots,"default")],2))}});export{p as _};
