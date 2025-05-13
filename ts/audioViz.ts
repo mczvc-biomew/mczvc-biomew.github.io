@@ -162,7 +162,7 @@ export class Visualizer {
 
         if (!this.isPlaying) return;
 
-        this.analyser!.getByteFrequencyData(this.frequencyData as Uint8Array<ArrayBufferLike>);
+        this.analyser!.getByteFrequencyData(this.frequencyData as Uint8Array<ArrayBuffer>);
 
         const canvas = this.canvas as HTMLCanvasElement;
 
