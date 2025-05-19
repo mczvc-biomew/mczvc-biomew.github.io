@@ -46,16 +46,18 @@ export function connectBufferSourceNodeToAnalyser(
   return sourceNode;
 }
 
-export function loadSound(audioSrc: string, onLoad: (buffer: ArrayBuffer) => void) {
-  let req = new XMLHttpRequest();
-  req.open('GET', audioSrc, true);
-  req.responseType = 'arraybuffer';
+export function loadSound(audioSrc: string) {
+  return new Promise( (resolve, reject) => {
+    let req = new XMLHttpRequest();
+    req.open('GET', audioSrc, true);
+    req.responseType = 'arraybuffer';
 
-  req.onload = function () {
-    onLoad(req.response);
-  }
-  
-  req.send();
+    req.onload = function () {
+      resolve(req.response);
+    }
+    
+    req.send();
+  });
 }
 
 export function decodeAudioData(context: AudioContext, arrayBuffer: ArrayBuffer, successCb: DecodeSuccessCallback, errorCb: DecodeErrorCallback) {

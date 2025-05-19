@@ -4,7 +4,6 @@ import { fillText, renderLounge, renderSongText, renderTime, setCanvasGradientSt
 export type VisualizerConfig = {
     autoplay: boolean,
     loop: Ref<boolean>,
-    audioBuffer: ArrayBuffer | null,
     canvas: string,
     title: string,
     author: string,
@@ -19,7 +18,8 @@ export type VisualizerConfig = {
     font: string[],
     fontSize: number,
     clickHandler: ClickHandler,
-    onMusicEnded: MusicEndHandler
+    onMusicEnded: MusicEndHandler,
+    fetchBufferSrc: ((src: string) => any) | null
 }
 
 type ClickHandler = (state: any, e: MouseEvent) => void;
@@ -49,7 +49,6 @@ export class Visualizer {
 
     private autoplay: boolean;
     private loop: Ref<boolean>;
-    private audioBuffer: ArrayBuffer | null;
     private canvas: HTMLElement;
     private title: string;
     private author: string;
@@ -66,6 +65,7 @@ export class Visualizer {
     private _onClick: ((event: MouseEvent) => void) | null ;
     private clickHandler: ClickHandler;
     private onMusicEnded: MusicEndHandler;
+    private fetchBufferSrc: ((src: string) => any) | null
 
     constructor ( 
         cfg: VisualizerConfig
@@ -77,7 +77,6 @@ export class Visualizer {
             cfg.loop : 
             ((cfg.loop.value === undefined && cfg.loop) 
             || ref(false));
-        this.audioBuffer = cfg.audioBuffer;
         this.canvas = document.getElementById(cfg.canvas)!;
         this.canvasCtx = (this.canvas as HTMLCanvasElement)!.getContext('2d')!;
         this.author = cfg.author || '';
@@ -106,6 +105,7 @@ export class Visualizer {
         this.loaded = false;
         this.disposed = false;
         this.onMusicEnded = cfg.onMusicEnded || null;
+        this.fetchBufferSrc = cfg.fetchBufferSrc || null;
     }
 
     public playSound(buffer: AudioBuffer | null) {
@@ -194,7 +194,7 @@ export class Visualizer {
         if (this._onClick !== null) {
             document.documentElement.removeEventListener(
                 'click', this._onClick
-            )
+            );
         }
         this.cancelAnimationFrames();
     }
@@ -232,23 +232,37 @@ export class Visualizer {
 
             fillText(this.canvasCtx, canvas.width / 2 + 10, canvas.height / 2, this.font[1], this.fontSize);
 
-            loadSound(this.audioSrc!, (buffer) => {
-                this.loading = false;
+            const error = (reason: any) => {
+                this.loaded = false;
+                this.state = 'error';
+                console.error(reason);
+                console.warn('Error loading sound.');
+            }
 
-                decodeAudioData(
-                        this.audioContext!, buffer /*this.audioBuffer!*/, 
-                        this.playSound.bind(this), 
-                        this.onError.bind(this)
+            const decode = (buffer: any) => {
+                decodeAudioData( this.audioContext!, buffer /*this.audioBuffer!*/, this.playSound.bind(this), this.onError.bind(this)
                 ).then( () => {
                     this.loaded = true;
                     this.state = 'loaded';
                 } ).catch( (reason) => {
-                    this.loaded = false;
-                    this.state = 'error';
-                    console.error(reason);
-                    console.warn('Error loading sound.');
+                    error(reason);
                 });
-            });
+            }
+
+            if (this.fetchBufferSrc !== null) {
+                this.fetchBufferSrc(this.audioSrc || '').then( (buffer: ArrayBuffer) => {
+                    if (buffer === null) {
+                        error('buffer is null');
+                        return null;
+                    }
+                    decode(buffer);
+                });
+            } else {
+                loadSound(this.audioSrc!).then( (buffer) => {
+                    this.loading = false;
+                    decode(buffer);
+                });
+            }
         }
     }
 
