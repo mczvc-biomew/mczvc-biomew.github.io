@@ -1,1 +1,0 @@
-import{d as s,c as t,K as n,a0 as o,x as r,y as c,o as l}from"./TfP4VtPe.js";const p=s({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(a,i)=>(l(),t("div",{class:c([e.classNames])},[n(r(e.text)+" ",1),o(a.$slots,"default")],2))}});export{p as _};
