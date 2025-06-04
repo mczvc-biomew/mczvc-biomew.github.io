@@ -1,1 +1,0 @@
-import{_ as o}from"./b0ws5AiA.js";import{_ as t,a as c,o as s}from"./TfP4VtPe.js";const n={};function r(a,_){const e=o;return s(),c(e,{src:"https://utteranc.es/client.js",repo:"mczvc-biomew/mczvc-biomew.github.io","issue-term":"pathname",label:"good first issue",theme:"github-dark",crossorigin:"anonymous",async:"true"})}const p=t(n,[["render",r]]);export{p as default};
