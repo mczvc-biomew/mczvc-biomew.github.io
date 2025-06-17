@@ -1,0 +1,1 @@
+import{_ as o,c as t,o as s,a0 as c}from"./DPbF3f2r.js";const n={},a={class:"not-found-layout"};function r(e,_){return s(),t("div",a,[c(e.$slots,"default")])}const d=o(n,[["render",r]]);export{d as default};
