@@ -1,0 +1,1 @@
+import{_ as a,c as s,o as t,a3 as o}from"./DClu4hc-.js";const c={},n={class:"game"};function r(e,_){return t(),s("div",n,[o(e.$slots,"default",{},void 0,!0)])}const f=a(c,[["render",r],["__scopeId","data-v-60ea9614"]]);export{f as default};
