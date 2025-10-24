@@ -1,1 +1,0 @@
-import s from"./Bc_rkMab.js";import{d as o,ak as f,ab as u,f as m}from"./BVcYxftt.js";import"./BmlbPuZL.js";const d=o({name:"Markdown",extends:s,setup(t){const{parent:e}=f(),{between:n,default:a}=u(),r=m(()=>typeof t.unwrap=="string"?t.unwrap.split(" "):["*"]);return{fallbackSlot:a,tags:r,between:n,parent:e}}});export{d as default};
