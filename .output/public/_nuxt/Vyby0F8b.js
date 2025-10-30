@@ -1,1 +1,0 @@
-import{d as s,c as t,L as n,a3 as o,y as r,z as c,o as l}from"./BQOrxtDg.js";const p=s({__name:"BasicContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(a,i)=>(l(),t("div",{class:c([e.classNames])},[n(r(e.text)+" ",1),o(a.$slots,"default")],2))}});export{p as _};
