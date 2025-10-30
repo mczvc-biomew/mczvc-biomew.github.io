@@ -1,0 +1,1 @@
+import{_ as c,c as _,o as s,m as o,p as a,J as r}from"./D5U7brRO.js";import{_ as m}from"./DKKBZjHq.js";const i={},l={class:"home-icon-wrapper absolute z-2"};function p(n,f){const t=r,e=m;return s(),_("div",l,[o(e,{icon:"home-icon"},{default:a(()=>[o(t,{to:n.$localePath("/")},null,8,["to"])]),_:1})])}const h=c(i,[["render",p]]);export{h as default};
