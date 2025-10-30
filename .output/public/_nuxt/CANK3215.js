@@ -1,0 +1,1 @@
+import{d as a,c as o,L as n,a3 as s,y as r,z as l,o as c}from"./Klu263NR.js";const p=a({__name:"DocumentContainer",props:{text:{type:String},classNames:{type:String}},setup(e){return(t,i)=>(c(),o("div",{class:l([e.classNames])},[n(r(e.text)+" ",1),s(t.$slots,"default"),s(t.$slots,"footer")],2))}});export{p as default};
