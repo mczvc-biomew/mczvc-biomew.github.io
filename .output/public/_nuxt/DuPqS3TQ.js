@@ -1,0 +1,1 @@
+import{d as n,c as e,n as s,o as a,_ as c}from"./Dnq5b-0k.js";const o={class:"unang-tikim_2025"},t="/music/mv/Unang-Tikim_720.mp4",i=n({__name:"unang-tikim",setup(_){return(m,r)=>(a(),e("div",o,[s("video",{src:t,controls:""})]))}}),d=c(i,[["__scopeId","data-v-51c1ceb5"]]);export{d as default};
