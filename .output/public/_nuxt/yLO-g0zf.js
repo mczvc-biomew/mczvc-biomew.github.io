@@ -1,1 +1,0 @@
-import{_ as s,c as o,o as t,a3 as a}from"./D9jr4d1d.js";const c={},n={class:"simple-layout"};function r(e,l){return t(),o("div",n,[a(e.$slots,"default")])}const d=s(c,[["render",r]]);export{d as default};
