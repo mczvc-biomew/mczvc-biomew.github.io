@@ -31,7 +31,7 @@ export function renderSongText(
     fontFamily:string, fontSize: number, fontStyle = 'bold'
 ) {
     const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
+    const cy = canvas.height / 2 - 25;
     const correction = x;
 
     canvasContext.font = `${fontStyle} ${fontSize}px ${fontFamily}`
@@ -49,16 +49,16 @@ export function renderTime(
     x: number, y: number
 ){
     let time = `${minutes}:${seconds}`;
-    canvasContext.fillText(time, canvas.width / 2 + x, canvas.height / 2 + y);
+    canvasContext.fillText(time, canvas.width / 2 + x, canvas.height / 2 - 25 + y);
 }
 
 export function renderLounge(
     canvasContext: CanvasRenderingContext2D, canvas: HTMLCanvasElement,
     radius: number, barWidth: number, barHeight: number, barSpacing: number,
-    frequencyData: Uint8Array<ArrayBuffer>
+    frequencyData: Uint8Array
 ) {
     const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
+    const cy = canvas.height / 2 - 25;
     const maxBarNum = Math.floor((radius * 2 * Math.PI) / (barWidth + barSpacing));
     const slicedPercent = Math.floor((maxBarNum * 25) / 100);
     const barNum = maxBarNum - slicedPercent;
