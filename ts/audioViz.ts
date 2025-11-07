@@ -41,7 +41,7 @@ export class Visualizer {
     private sourceNode: AudioBufferSourceNode | null;
     private canvasCtx: CanvasRenderingContext2D;
     private audioContext: AudioContext | null;
-    private frequencyData: Uint8Array<ArrayBufferLike> | [];
+    private frequencyData: Uint8Array | [];
     private duration: number;
     private minutes: string;
     private seconds: string;
@@ -153,7 +153,7 @@ export class Visualizer {
 
         renderLounge(this.canvasCtx, canvas, 140, 
             this.barWidth, this.barHeight, this.barSpacing,
-        this.frequencyData as Uint8Array<ArrayBuffer>);
+        this.frequencyData as Uint8Array);
     }
 
     private renderFrame () {
@@ -162,7 +162,7 @@ export class Visualizer {
 
         if (!this.isPlaying) return;
 
-        this.analyser!.getByteFrequencyData(this.frequencyData as Uint8Array<ArrayBuffer>);
+        this.analyser!.getByteFrequencyData(this.frequencyData as Uint8Array);
 
         const canvas = this.canvas as HTMLCanvasElement;
 
