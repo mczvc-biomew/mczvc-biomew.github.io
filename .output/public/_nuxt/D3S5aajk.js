@@ -1,0 +1,1 @@
+import{r as c,H as g}from"./DKQNZIjC.js";const e=new Map;function n(t,s){let a=e.has(t)?e.get(t):c(s);e.set(t,a);{const r=localStorage.getItem(t);e.has(t)||r&&(a.value=r),g(e.get(t),o=>{o!==r&&localStorage.setItem(t,o)},{immediate:!0})}return a}export{n as u};
