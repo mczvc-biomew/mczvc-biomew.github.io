@@ -1,0 +1,1 @@
+import{d as s,c as n,n as a,a4 as t,z as c,o as r}from"./Bo2a1m-g.js";const i={class:"icon-wrapper"},_=s({__name:"Icon",props:{icon:String},setup(e){return(o,l)=>(r(),n("div",i,[a("button",{class:c([e.icon,"icon"])},[t(o.$slots,"default")],2)]))}});export{_};
